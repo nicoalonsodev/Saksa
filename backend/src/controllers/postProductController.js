@@ -2,16 +2,11 @@ const { Product } = require("../db");
 
 const postProductController = async (
   productName,
-  price,
-  brand,
-  cat,
-  sub_cat,
-  sizes,
-  variants,
-  color,
-  badge,
-  image,
-  description
+  type,
+  images,
+  description,
+  year,
+  surface
 ) => {
   // Buscar si existe un usuario con la misma dirección de correo electrónico y proveedor
   let product = await Product.findOne({ where: { productName } });
@@ -20,16 +15,11 @@ const postProductController = async (
     // No se encontró un usuario con la misma dirección de correo electrónico y proveedor, crear uno nuevo
     product = await Product.create({
       productName,
-      price,
-      brand,
-      cat,
-      sub_cat,
-      sizes,
-      variants,
-      color,
-      badge,
-      image,
+      type,
+      images,
       description,
+      year,
+      surface
     });
   }
   return product;

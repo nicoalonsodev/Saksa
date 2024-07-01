@@ -4,29 +4,19 @@ const postProductHandler = async (req, res) => {
   try {
     const {
       productName,
-      price,
-      brand,
-      cat,
-      sub_cat,
-      sizes,
-      variants,
-      color,
-      badge,
-      image,
+      type,
+      images,
       description,
+      year,
+      surface
     } = req.body;
     const userPosted = await postProductController(
       productName,
-      price,
-      brand,
-      cat,
-      sub_cat,
-      sizes,
-      variants,
-      color,
-      badge,
-      image,
-      description
+      type,
+      images,
+      description,
+      year,
+      surface
     );
     return res.status(200).json(userPosted);
   } catch (error) {

@@ -6,41 +6,19 @@ const putProductHandler = async (req, res) => {
   const id = req.params.id;
   const {
     productName,
-    price,
-    compare_price,
-    brand,
-    cat,
-    sub_cat,
-    sizes,
-    variants,
-    color,
-    badge,
-    image,
+    type,
+    images,
     description,
-    best_sellers,
-    new_arrivals,
-    special_offers,
-    discount_percentage,
-    video_youtube
+    year,
+    surface
   } = req.body;
   const updatedFields = {
     productName,
-    price,
-    compare_price,
-    brand,
-    cat,
-    sub_cat,
-    sizes,
-    variants,
-    color,
-    badge,
-    image,
+    type,
+    images,
     description,
-    best_sellers,
-    new_arrivals,
-    special_offers,
-    discount_percentage,
-    video_youtube
+    year,
+    surface
   };
   try {
     await putProductController(id, updatedFields);
