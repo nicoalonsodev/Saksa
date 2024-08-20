@@ -8,6 +8,7 @@ const uploadImage = require("./UploadImages.js");
 const {
   FRONT_URL
 } = process.env;
+const {whatsapp} = require('./lib/whatsapp.js');
 
 require('./db.js');
 
@@ -40,6 +41,9 @@ server.post("/uploadImage", (req, res) => {
     .then((url) => res.send(url))
     .catch((err) => res.status(500).send(err));
 });
+
+whatsapp.initialize();
+
 
 // Error catching endware.
 server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars

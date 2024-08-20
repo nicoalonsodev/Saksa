@@ -15,7 +15,7 @@ const { authenticateToken } = require('../helpers/authenticateToken');
 const {loginHandler} = require('../handlers/authHandler');
 const {protectedRouteHandler} = require('../handlers/authHandler');
 const {deleteUserHandler} = require('../handlers/deleteUserHandler');
-
+const {sendWhatsapp} = require('../handlers/postVerificationHandler');
 router.get("/products", getAllProductsHandler);
 router.get("/products/:id", getProductByIdHandler);
 router.get("/users", getUsersHandler);
@@ -25,6 +25,7 @@ router.get('/admin', authenticateToken, protectedRouteHandler);
 
 router.post("/products", postProductHandler);
 router.post("/users", postUserHandler);
+router.post('/send-verification', sendWhatsapp);
 
 router.put("/products/:id", putProductHandler);
 router.put("/users/:id", putUserHandler);
