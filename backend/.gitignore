@@ -38,4 +38,5 @@ next-env.d.ts
 .env
 
 
-/.wwebjs_auth/session/Default/Cache/
+/.wwebjs_cache
+/.wwebjs_auth
