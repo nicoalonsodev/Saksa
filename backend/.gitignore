@@ -38,5 +38,4 @@ next-env.d.ts
 .env
 
 
-/.wwebjs_cache
 /.wwebjs_auth
