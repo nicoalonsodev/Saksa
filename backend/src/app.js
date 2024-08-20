@@ -22,7 +22,7 @@ server.use(cookieParser());
 server.use(morgan('dev'));
 
 // Configuración CORS    //https://www.saksa.com.ar   http://localhost:3000   --omit=dev  https://saksa-production.up.railway.app/
-const allowedOrigins = ['https://www.saksa.com.ar', 'http://localhost:3000'];
+const allowedOrigins = ['https://www.saksa.com.ar', 'http://localhost:3000', 'https://www.revolutionoficial.com'];
 server.use((req, res, next) => {
   const origin = req.headers.origin;
   if (allowedOrigins.includes(origin)) {
