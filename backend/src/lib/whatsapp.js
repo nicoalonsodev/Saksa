@@ -14,7 +14,6 @@ const whatsapp = new Client({
 });
 
 whatsapp.on('qr', qr => {
-  qrCodeData = qr;
   qrcode.generate(qr, {
       small: true
       
@@ -25,4 +24,4 @@ whatsapp.on('ready', () => {
   console.log('Client is ready!');
 });
 
-module.exports = {whatsapp,  qrCodeData};
+module.exports = {whatsapp};
