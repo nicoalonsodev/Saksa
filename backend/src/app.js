@@ -44,6 +44,15 @@ server.post("/uploadImage", (req, res) => {
 
 whatsapp.initialize();
 
+server.get('/show-qr', (req, res) => {
+  if (qrCodeData) {
+    qrcode.toDataURL(qrCodeData, (err, url) => {
+      res.send(`<img src="${url}">`);
+    });
+  } else {
+    res.send('QR code not available yet.');
+  }
+});
 
 // Error catching endware.
 server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
