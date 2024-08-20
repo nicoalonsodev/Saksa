@@ -1,26 +1,24 @@
-const qrcode = require('qrcode-terminal');
-const { Client, LocalAuth  } = require('whatsapp-web.js');
+const qrcode = require('qrcode'); // Cambiamos a 'qrcode' para poder generar la imagen del QR
+const { Client, LocalAuth } = require('whatsapp-web.js');
+
+let qrCodeData = '';  // Variable para almacenar el QR Code
 
 const whatsapp = new Client({
   puppeteer: {
-		args: ['--no-sandbox', '--disable-setuid-sandbox'],
-	},
-  authStrategy: new LocalAuth(),
-//   webVersion: '2.2412.54',
-  webVersionCache: {
-    type: 'remote',
-    remotePath: 'https://raw.githubusercontent.com/wppconnect-team/wa-version/main/html/2.2412.54.html',
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
   },
+  authStrategy: new LocalAuth(),
 });
 
 whatsapp.on('qr', qr => {
-  qrcode.generate(qr, {
-      small: true
-  });
+  qrCodeData = qr;  // Almacenamos el código QR recibido
+  console.log('QR Code received.');
 });
 
 whatsapp.on('ready', () => {
   console.log('Client is ready!');
 });
 
-module.exports = {whatsapp};
+whatsapp.initialize();
+
+module.exports = { whatsapp, qrCodeData };
