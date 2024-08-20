@@ -37,17 +37,29 @@ router.delete("/user/:id", deleteUserHandler);
 
 // Nueva ruta para mostrar el QR Code
 router.get('/show-qr', (req, res) => {
-  if (qrCodeData) {
-    qrcode.toDataURL(qrCodeData, (err, url) => {
-      if (err) {
-        res.status(500).send('Error generating QR code');
-      } else {
-        res.send(`<img src="${url}">`);
-      }
-    });
-  } else {
-    res.send('QR code not available yet. Please try again later.');
-  }
-});
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
+  
+    if (qrCodeData) {
+      qrcode.toDataURL(qrCodeData, (err, url) => {
+        if (err) {
+          res.status(500).send('Error generating QR code');
+        } else {
+          res.send(`<img src="${url}">`);
+        }
+      });
+    } else {
+      res.send(`
+        <p>QR code not available yet. Please try again later.</p>
+        <script>
+          setTimeout(() => {
+            window.location.reload();
+          }, 3000); // Recarga la página cada 3 segundos
+        </script>
+      `);
+    }
+  });
+  
 
 module.exports = router;
