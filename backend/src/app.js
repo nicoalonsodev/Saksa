@@ -8,7 +8,7 @@ const uploadImage = require("./UploadImages.js");
 const {
   FRONT_URL
 } = process.env;
-const {whatsapp} = require('./lib/whatsapp.js');
+
 
 require('./db.js');
 
@@ -42,7 +42,7 @@ server.post("/uploadImage", (req, res) => {
     .catch((err) => res.status(500).send(err));
 });
 
-whatsapp.initialize();
+
 
 // server.get('/show-qr', (req, res) => {
 //   if (qrCodeData) {
