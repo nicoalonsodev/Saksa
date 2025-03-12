@@ -3,7 +3,7 @@ const {
 } = require("../controllers/getAllProductsController");
 
 const getAllProductsHandler = async (req, res) => {
-  const { page = 1, limit = 50 } = req.query;
+  const { page = 1, limit = 100 } = req.query;
 
   try {
     let apiResponse = await getAllProductsController(page, limit);
